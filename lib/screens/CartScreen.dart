@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:shop/providers/Orders.dart';
 import 'package:shop/providers/cart.dart';
 import 'package:shop/widgets/CartItemWidget.dart';
+import 'package:shop/widgets/MainDrawer.dart';
 
 class CartScreen extends StatelessWidget {
   static const String routeName = '/cartscreen';
@@ -13,6 +14,7 @@ class CartScreen extends StatelessWidget {
     final cartItems = Provider.of<Cart>(context);
     final orders = Provider.of<Orders>(context);
     return Scaffold(
+      drawer: MainDrawer(),
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
         title: Text('MY CART'),

@@ -5,6 +5,7 @@ import 'package:shop/providers/Products.dart';
 import 'package:shop/providers/cart.dart';
 import 'package:shop/screens/CartScreen.dart';
 import 'package:shop/screens/GridProduct.dart';
+import 'package:shop/screens/OrderScreen.dart';
 
 void main() {
   runApp(App());
@@ -33,6 +34,7 @@ class _AppState extends State<App> {
         routes: {
           '/': (ctx) => GridList(),
           CartScreen.routeName: (ctx) => CartScreen(),
+          OrdersScreen.routeName: (ctx) => OrdersScreen(),
         },
       ),
     );
