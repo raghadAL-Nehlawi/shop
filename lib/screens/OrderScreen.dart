@@ -20,8 +20,12 @@ class OrdersScreen extends StatelessWidget {
       body: ListView.builder(
         itemCount: orders.orders.length,
         itemBuilder: (ctx, i) {
-          return ChangeNotifierProvider.value(
-            value: orders.orders[i],
+          return MultiProvider(
+            providers: [
+              ChangeNotifierProvider.value(
+                value: orders.orders[i],
+              )
+            ],
             child: OrderItemWidget(),
           );
         },
