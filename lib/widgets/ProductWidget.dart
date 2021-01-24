@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:shop/providers/Product.dart';
 import 'package:shop/providers/cart.dart';
@@ -53,7 +54,20 @@ class ProductWidget extends StatelessWidget {
                 ),
                 onPressed: () {
                   cart.addToCart(product.id, product.price, product.name);
-                  print(cart.items.length);
+                  Scaffold.of(context).hideCurrentSnackBar();
+                  Scaffold.of(context).showSnackBar(SnackBar(
+                    duration: Duration(seconds: 2),
+                    action: SnackBarAction(
+                      onPressed: () {
+                        cart.removeAddition(product.id);
+                      },
+                      label: 'undo',
+                    ),
+                    content: Text(
+                      'Added item to cart',
+                      textAlign: TextAlign.center,
+                    ),
+                  ));
                 },
               ),
               title: Text(

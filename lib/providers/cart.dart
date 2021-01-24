@@ -40,8 +40,8 @@ class Cart with ChangeNotifier {
     notifyListeners();
   }
 
-  void removeItem(String id) {
-    _items.remove(id);
+  void removeItem(String key) {
+    _items.remove(key);
     notifyListeners();
   }
 
@@ -52,7 +52,17 @@ class Cart with ChangeNotifier {
     });
     return total;
   }
-  clear(){
+
+  removeAddition(String id) {
+    if (!_items.containsKey(id)) return;
+    if (_items[id].quantity > 1)
+      _items[id].quantity--;
+    else
+      _items.remove(id);
+    notifyListeners();
+  }
+
+  clear() {
     _items = {};
   }
 }

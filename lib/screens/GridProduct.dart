@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shop/providers/Product.dart';
 import 'package:shop/providers/Products.dart';
-import 'package:shop/providers/cart.dart';
 import 'package:shop/screens/CartScreen.dart';
 import 'package:shop/widgets/MainDrawer.dart';
-import 'package:shop/widgets/ProductWdiget.dart';
+import 'package:shop/widgets/ProductWidget.dart';
 
 enum OnSelectedItem {
   All,
@@ -22,7 +21,7 @@ class _GridListState extends State<GridList> {
 
   @override
   Widget build(BuildContext context) {
-    final productsData = Provider.of<Products>(context, listen: true);
+    final productsData = Provider.of<Products>(context, listen: false);
 
     List<Product> products;
     showFavorite
@@ -31,7 +30,6 @@ class _GridListState extends State<GridList> {
     return Scaffold(
       drawer: MainDrawer(),
       appBar: AppBar(
-
         backgroundColor: Theme.of(context).primaryColor,
         title: Text("Shop"),
         actions: [
